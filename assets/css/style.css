@@ -72,3 +72,11 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
+footer {
+  display: flex;
+  color: #919191;
+  justify-content: center;
+  padding: 20px;
+  margin: 20px;
+}

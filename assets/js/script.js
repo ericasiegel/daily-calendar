@@ -1,5 +1,7 @@
 let hourlyTask = $("textarea");
-let hour = moment();
+let dayHour = moment();
+let currentHour;
+let hourText = $(".text");
 let tasks;
 
 let date = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -29,5 +31,33 @@ let setTasks = function() {
 
 };
 
+let hourlyTaskUpdate = function() {
+    
+
+    $(hourText).removeClass("past present future");
+
+    $.each(hourText, function(scheduleHour) {
+        if (scheduleHour < (dayHour.hour() - 9)) {
+            $(this).addClass("past");
+        }
+        else if (scheduleHour > (dayHour.hour() - 9)) {
+            $(this).addClass("present");
+        }
+        else {
+            $(this).addClass("future");
+        }
+    });
+    currentHour = dayHour.hour();
+};
+
+setInterval(function () {
+    $(".task #currentDay").each(function() {
+      
+    });
+  }, (1000));
+
+//  console.log(hourlyTaskUpdate);
+
+hourlyTaskUpdate();
 dayTask();
 $(".saveBtn").click(setTasks);

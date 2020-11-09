@@ -1,61 +1,28 @@
+let hourlyTask = $("textarea");
+let hour = moment();
+let tasks;
+
 let date = moment().format('MMMM Do YYYY, h:mm:ss a');
-
-
 let $todaysDate = $("#currentDay");
 $todaysDate.text(date);
 
-let tasks = [];
 
-var loadTasks = function() {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-  
-    // if nothing in localStorage, create a new object to track all task status arrays
-    if (!tasks) {
-      tasks = {
-        nine: [],
-        ten: [],
-        eleven: [],
-        twelve: [],
-        thirteen: [],
-        fourteen: [],
-        fifteen: [],
-        sixteen: [],
-        seventeen: []
-      };
-    }
-  
-    // loop over object properties
-    $.each(tasks, function(list, arr) {
-      // console.log(list, arr);
-      // then loop over sub-array
-      arr.forEach(function(task) {
-        createTask(task.text, list);
-      });
-    });
-  };
+$.each(hourlyTask, function(){
+    $(this).value = "";
+});
 
-  var saveTasks = function() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  };
+let eachTask = function() {
+    $.each(tasks, function(i) {
+       if (tasks[i]) {
+           hourlyTask[i].value = tasks[i].task
+       }
+    })
+};
 
-  $(".task-group").on("click", function) {
-    var createTask = function(taskText) {
-        // create elements that make up a task item
-        var taskLi = $("<p>").addClass("list-group-item");
-        var taskP = $("<textarea>")
-          .addClass("m-1")
-          .text(taskText);
-      
-        // append span and p element to parent li
-        taskLi.append(taskSpan, taskP);
-      
-        // check due date
-        auditTask(taskLi);
-      
-      
-        // append to ul list on the page
-        $("#task-" + taskList).append(taskLi);
-      };
-  };
+let setTasks = function() {
+    let hourlyTask = JSON.parse(localStorage.getItem("hourlyTask") || "[]");
+    hourlyTask.push(tasks)
+    localStorage.setItem("hourlyTask", JSON.stringify(hourlyTask));
+};
 
- 
+$(".saveBtn").on("click", setTasks);

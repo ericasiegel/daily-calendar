@@ -58,10 +58,11 @@ let hourlyTaskUpdate = function() {
 };
 
 setInterval(function () {
+    dayHour = moment();
     if (currentHour < dayHour.hour()) {
         hourlyTaskUpdate();
     }
-  }, 100);
+  }, 1000);
 
 
 

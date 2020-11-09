@@ -10,7 +10,7 @@ Object is to create a schedule app for a person's work day. In the app the user 
 - Once the event is entered the user clickes the "save" button and the event is saved to local storage
 - when the page is refreshed the events are still in the time blocks
 
-
+[Click Here](https://ericasiegel.github.io/daily-calendar/) to see the app.
 
 ### Day Scheduler
 ![Day Scheduler](./assets/images/start.png)

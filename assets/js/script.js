@@ -4,9 +4,16 @@ let currentHour;
 let hourText = $(".text");
 let tasks;
 
-let date = moment().format('MMMM Do YYYY, h:mm:ss a');
-let $todaysDate = $("#currentDay");
-$todaysDate.text(date);
+let todaysDate = function() {
+    let date = moment().format('MMMM Do YYYY, h:mm:ss a');
+    let $todaysDate = $("#currentDay");
+    $todaysDate.text(date);
+};
+
+$(document).ready(function() {
+    todaysDate();
+    setInterval(todaysDate, 100);
+});
 
 if (localStorage.getItem("tasks")) {
     tasks = JSON.parse(localStorage.getItem("tasks"));
@@ -51,10 +58,12 @@ let hourlyTaskUpdate = function() {
 };
 
 setInterval(function () {
-    $(".task #currentDay").each(function() {
-      
-    });
-  }, (1000));
+    if (currentHour < dayHour.hour()) {
+        hourlyTaskUpdate();
+    }
+  }, 100);
+
+
 
 //  console.log(hourlyTaskUpdate);
 

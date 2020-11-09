@@ -16,7 +16,7 @@ Object is to create a schedule app for a person's work day. In the app the user 
 ![Day Scheduler](./assets/images/start.png)
 
 ### Day Scheduler with Events
-![Day Scheduler with Events](./assets/images/events.png)
+![Day Scheduler with Events](./assets/images/tasks.png)
 
 
 
